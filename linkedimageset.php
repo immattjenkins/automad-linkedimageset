@@ -31,6 +31,9 @@ class LinkedImageSet {
 
     $defaults = 	array(
           'files' => '*.jpg',
+          'class' => false,
+          'firstClass' => false,
+          'target' => false
         );
 
     // Merge defaults with options
@@ -41,7 +44,10 @@ class LinkedImageSet {
 
     // Generate HTML to be returned
     $html = '<div class="linked_image_set">';
-    $html .= self::generateLinkedImageSet($files);
+    $html .= self::generateLinkedImageSet($files,
+                                          $options['class'],
+                                          $options['firstClass'],
+                                          $options['target']);
     $html .= '</div>';
 
     return $html;
@@ -72,7 +78,6 @@ class LinkedImageSet {
         // Creates a var that can be used to set the link to the page in ~/gui
         $linkVar = '<a href="' . \Automad\Core\Html::addVariable('linkvar_' . \Automad\Core\Parse::sanitize(basename($file))) . '">';
         $linkVarEnd = '</a>';
-
 
         // Add class if defined
         if($class) {
