@@ -94,9 +94,14 @@ class LinkedImageSet {
           $first = false;
         }
 
+        if($caption) {
+          $captionVar = '<span>' . \Automad\Core\Html::addVariable('image_caption_' . \Automad\Core\Parse::sanitize(basename($file))) . '</span>';
+        } else {
+          $captionVar = '';
+        }
+
         // Generate html
         $html .= '<div' . $classAttr . '>' . $linkVar;
-
         $html .= \Automad\Core\Html::addImage($file,
                                               false,
                                               false,
@@ -105,6 +110,7 @@ class LinkedImageSet {
                                               false,
                                               AM_HTML_CLASS_LIST_ITEM_IMG,
                                               $caption);
+        $html .= $captionVar;
         $html .= '</div>' . $linkVarEnd;
 
       }
