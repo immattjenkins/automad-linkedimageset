@@ -95,7 +95,7 @@ class LinkedImageSet {
         }
 
         if($caption) {
-          $captionVar = '<span>' . \Automad\Core\Html::addVariable('image_caption_' . \Automad\Core\Parse::sanitize(basename($file))) . '</span>';
+          $captionVar = '<div class="lsi-caption"><span>' . \Automad\Core\Html::addVariable('image_caption_' . \Automad\Core\Parse::sanitize(basename($file))) . '</span></div>';
         } else {
           $captionVar = '';
         }
